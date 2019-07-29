@@ -2,10 +2,11 @@
   "name": "be-offthewall",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "setup-dbs": "psql -f ./db/setup.sql",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx nodemon"
   },
   "repository": {
     "type": "git",
@@ -26,5 +27,8 @@
     "knex": "^0.19.1",
     "pg": "^7.12.0",
     "pg-promise": "^9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
   }
 }
