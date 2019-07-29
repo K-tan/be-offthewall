@@ -13,10 +13,10 @@ const config = {
 // console.log(process.env);
 const db = pgp(config);
 
-db.one("select * from artists")
-  .then(res => {
-    console.log(res);
-  })
-  .catch(console.log);
+// db.one("select * from artists")
+//   .then(res => {
+//     console.log(res);
+//   })
+//   .catch(console.log);
 
 exports.db = db;
