@@ -21,6 +21,21 @@ const RootMutation = new GraphQLObjectType({
           .then(res => res)
           .catch(err => err);
       }
+    },
+    updateArtist: {
+      type: ArtistType,
+      args: {
+        artist_id: { type: GraphQLID },
+        bio: { type: GraphQLString }
+      },
+      resolve(parentValue, args) {
+        const query = `UPDATE artists SET bio = $2 WHERE artist_id = $1 RETURNING bio`;
+        const values = [args.artist_id, args.bio];
+        return db
+          .one(query, values)
+          .then(res => res)
+          .catch(err => err);
+      }
     }
   }
 });
