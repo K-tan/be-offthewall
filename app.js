@@ -19,4 +19,6 @@ app.use(
   })
 );
 
-app.listen(3000, () => console.log("GraphQl server running on localhost:3000"));
+app.listen(3000, () =>
+  console.log("GraphQl server now running on localhost:3000")
+);
