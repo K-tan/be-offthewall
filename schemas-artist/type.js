@@ -1,13 +1,7 @@
 const graphql = require("graphql");
-const {
-  GraphQLObjectType,
-  GraphQLID,
-  GraphQLString,
-  GraphQLInt,
-  GraphQLList
-} = graphql;
+const { GraphQLObjectType, GraphQLID, GraphQLString } = graphql;
 
-const ArtistType = new GraphQLObjectType({
+exports.ArtistType = new GraphQLObjectType({
   name: "Artist",
   type: "Query",
   description: "One artist",
@@ -17,5 +11,3 @@ const ArtistType = new GraphQLObjectType({
     bio: { type: GraphQLString }
   }
 });
-
-module.exports = { ArtistType };

@@ -1,7 +1,6 @@
-const graphql = require("graphql");
 const express = require("express");
 const expressGraphQL = require("express-graphql");
-const { GraphQLSchema } = graphql;
+const { GraphQLSchema } = require("graphql");
 const { query } = require("./schemas-artist/query");
 const { mutation } = require("./schemas-artist/mutations");
 
@@ -18,6 +17,10 @@ app.use(
     graphiql: true
   })
 );
+
+// const intro = () => {
+//   JSON.stringify(introspectionQuery);
+// };
 
 app.listen(3000, () =>
   console.log("GraphQl server now running on localhost:3000")

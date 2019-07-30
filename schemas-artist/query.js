@@ -2,7 +2,7 @@ const { db } = require("../db/pgAdaptor");
 const { GraphQLID, GraphQLList, GraphQLObjectType } = require("graphql");
 const { ArtistType } = require("./type");
 
-const RootQuery = new GraphQLObjectType({
+exports.RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
   type: "Query",
   description: "Query methods on artist type",
@@ -17,7 +17,6 @@ const RootQuery = new GraphQLObjectType({
       resolve(parentValue, args) {
         const query = `SELECT * FROM artists WHERE artist_id=$1`;
         const values = [Number(args.artist_id)];
-        // console.log(values);
         return db
           .one(query, values)
           .then(res => res)
@@ -36,5 +35,3 @@ const RootQuery = new GraphQLObjectType({
     }
   }
 });
-
-exports.query = RootQuery;
