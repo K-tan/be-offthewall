@@ -20,14 +20,8 @@ const RootQuery = new GraphQLObjectType({
         // console.log(values);
         return db
           .one(query, values)
-          .then(res => {
-            console.log(res);
-            res;
-          })
-          .catch(err => {
-            console.log(err);
-            err;
-          });
+          .then(res => res)
+          .catch(err => err);
       }
     }
   }

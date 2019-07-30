@@ -14,18 +14,12 @@ const RootMutation = new GraphQLObjectType({
         bio: { type: GraphQLString }
       },
       resolve(parentValue, args) {
-        const query = `INSERT INTO artist(artist_username, bio) VALUES ($1, $2) RETURNING artist_username`; //flag
+        const query = `INSERT INTO artists(artist_username, bio) VALUES ($1, $2) RETURNING *`; //flag
         const values = [args.artist_username, args.bio];
         return db
           .one(query, values)
-          .then(res => {
-            console.log(res);
-            res;
-          })
-          .catch(err => {
-            console.log(err);
-            err;
-          });
+          .then(res => res)
+          .catch(err => err);
       }
     }
   }
