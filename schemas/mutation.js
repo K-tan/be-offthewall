@@ -36,6 +36,21 @@ const RootMutation = new GraphQLObjectType({
           .then(res => res)
           .catch(err => err);
       }
+    },
+    deleteArtist: {
+      type: ArtistType,
+      args: {
+        artist_id: { type: GraphQLID }
+      },
+      resolve(parentValue, args) {
+        const query = `DELETE FROM artists WHERE artist_id = $1 RETURNING artist_id`;
+        const values = [Number(args.artist_id)];
+        console.log(values);
+        return db
+          .one(query, values)
+          .then(res => res)
+          .catch(err => err);
+      }
     }
   }
 });
