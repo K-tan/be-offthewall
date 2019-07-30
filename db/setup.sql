@@ -21,8 +21,10 @@ CREATE TABLE walls(
     canvas_height INTEGER,
     canvas_width INTEGER,
     trigger_url TEXT,
-    trigger_height INTEGER,
-    trigger_width INTEGER,
+    trigger_height_pixels INTEGER,
+    trigger_width_pixels INTEGER,
+    trigger_height_metres FLOAT,
+    trigger_width_metres FLOAT,
     trigger_offset_x INTEGER,
     trigger_offset_y INTEGER,
     created_at TIMESTAMP
@@ -30,7 +32,8 @@ CREATE TABLE walls(
 
 CREATE TABLE consumers(
     consumer_id serial PRIMARY KEY,
-    consumer_username VARCHAR(255)
+    consumer_username VARCHAR(255),
+    bio TEXT
 );
 
 CREATE TABLE images(
