@@ -10,7 +10,6 @@ const config = {
   // user: process.env.POSTGRES_USER,
   // password: process.env.POSTGRES_PASSWORD
 };
-// console.log(process.env);
 const db = pgp(config);
 
 // db.one("select * from artists")
