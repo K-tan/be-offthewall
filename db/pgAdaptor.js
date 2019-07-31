@@ -12,10 +12,12 @@ const config = {
 };
 const db = pgp(config);
 
-// db.one("select * from artists")
-//   .then(res => {
-//     console.log(res);
-//   })
-//   .catch(console.log);
+const knex = require("knex")({
+  client: "pg",
+  connection: {
+    database: db
+  }
+});
 
 exports.db = db;
+exports.knex = knex;

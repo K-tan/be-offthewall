@@ -51,6 +51,3 @@ CREATE TABLE comments(
     consumer_id INTEGER REFERENCES consumers(consumer_id),
     created_at TIMESTAMP DEFAULT NOW()
 );
-
-
-
