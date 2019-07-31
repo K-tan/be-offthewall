@@ -43,6 +43,16 @@ const RootQuery = new GraphQLObjectType({
           .catch(err => err);
       }
     },
+    fetchArtedWalls: {
+      type: new GraphQLList(WallType),
+      resolve() {
+        const query = `SELECT * FROM walls WHERE is_arted = 't'`;
+        return db
+          .many(query)
+          .then(res => res)
+          .catch(err => err);
+      }
+    },
     fetchImagesByWallID: {
       type: new GraphQLList(ImageType),
       args: {
