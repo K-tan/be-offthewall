@@ -1,51 +1,27 @@
 const express = require("express");
-const { ApolloServer, gql } = require("apollo-server-express");
 const expressGraphQL = require("express-graphql");
-const Sequelize = require("sequelize");
-const sequelize = new Sequelize("be_offthewall_test", {
-  host: "localhost",
-  dialect: "postgres",
-  pool: {
-    max: 9,
-    min: 0,
-    idle: 10000
-  }
+const { GraphQLSchema } = require("graphql");
+const { query } = require("./schemas-artist/query");
+const { mutation } = require("./schemas-artist/mutations");
+
+const schema = new GraphQLSchema({
+  query,
+  mutation
 });
+const app = express();
 
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log("Success!");
+app.use(
+  "/",
+  expressGraphQL({
+    schema,
+    graphiql: true
   })
-  .catch(err => {
-    console.log(err);
-  });
+);
 
-// const typeDefs = gql`
-//   type Query {
-//     artists: [Artist]
-//     artist(artist_id: ID!): Artist
-//   }
-// `;
-
-// const resolvers = {
-//   Query: {
-//     hello: () => "Hello world!"
-//   }
+// const intro = () => {
+//   JSON.stringify(introspectionQuery);
 // };
 
-// const server = new ApolloServer({ typeDefs, resolvers });
-const app = express();
-// server.applyMiddleware({ app });
-
-// app.use(
-//   "/",
-//   expressGraphQL({
-//     schema: typeDefs,
-//     graphiql: true
-//   })
-// );
-
-app.listen({ port: 4000 }, () => {
-  console.log("server ready on port 4000");
-});
+app.listen(3000, () =>
+  console.log("GraphQl server now running on localhost:3000")
+);
