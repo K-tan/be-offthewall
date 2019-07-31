@@ -18,10 +18,6 @@ app.use(
   })
 );
 
-// const intro = () => {
-//   JSON.stringify(introspectionQuery);
-// };
-
 app.listen(3000, () =>
   console.log("GraphQl server now running on localhost:3000")
 );
