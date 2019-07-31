@@ -2,7 +2,7 @@ const { db } = require("../db/pgAdaptor");
 const { GraphQLID, GraphQLList, GraphQLObjectType } = require("graphql");
 const { ArtistType } = require("./type");
 
-exports.RootQuery = new GraphQLObjectType({
+const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
   type: "Query",
   description: "Query methods on artist type",
@@ -35,3 +35,5 @@ exports.RootQuery = new GraphQLObjectType({
     }
   }
 });
+
+exports.query = RootQuery;

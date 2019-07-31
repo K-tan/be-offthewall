@@ -2,7 +2,7 @@ const db = require("../db/pgAdaptor").db;
 const { GraphQLID, GraphQLObjectType, GraphQLString } = require("graphql");
 const { ArtistType } = require("./type");
 
-exports.RootMutation = new GraphQLObjectType({
+const RootMutation = new GraphQLObjectType({
   name: "RootMutationType",
   type: "Mutation",
   description: "Mutation methods",
@@ -54,3 +54,5 @@ exports.RootMutation = new GraphQLObjectType({
     }
   }
 });
+
+exports.mutation = RootMutation;
