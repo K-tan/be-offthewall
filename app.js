@@ -2,14 +2,14 @@ const graphql = require("graphql");
 const express = require("express");
 const expressGraphQL = require("express-graphql");
 const { GraphQLSchema } = require("graphql");
-const { query } = require("./schemas-artist/query");
-const { mutation } = require("./schemas-artist/mutations");
+const { query } = require("./schema/query");
+const { mutation } = require("./schema/mutations");
 
 const schema = new GraphQLSchema({
   query,
   mutation
 });
-console.log(query);
+
 const app = express();
 
 app.use(

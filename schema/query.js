@@ -1,6 +1,6 @@
 const { db } = require("../db/pgAdaptor");
 const { GraphQLID, GraphQLList, GraphQLObjectType } = require("graphql");
-const { ArtistType } = require("./type");
+const { ArtistType, WallType } = require("./type");
 
 const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
@@ -27,6 +27,16 @@ const RootQuery = new GraphQLObjectType({
       type: new GraphQLList(ArtistType),
       resolve() {
         const query = `SELECT * FROM artists`;
+        return db
+          .many(query)
+          .then(res => res)
+          .catch(err => err);
+      }
+    },
+    fetchAllWalls: {
+      type: new GraphQLList(WallType),
+      resolve() {
+        const query = `SELECT * FROM walls`;
         return db
           .many(query)
           .then(res => res)
