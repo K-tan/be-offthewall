@@ -1,33 +1,25 @@
 const database = require("./knexfile");
+const { artistsData } = require("./test-data/artists");
+const { wallsData } = require("./test-data/walls");
+const { consumersData } = require("./test-data/consumers");
+const { imagesData } = require("./test-data/images");
+const { commentsData } = require("./test-data/comments");
 
-return database
-  .select("*")
-  .from("artists")
-  .then(res => {
-    console.log(res);
-    res;
+const artistsInsertions = database("artists").insert(artistsData);
+const wallsInsertions = database("walls").insert(wallsData);
+const consumersInsertions = database("consumers").insert(consumersData);
+const imagesInsertions = database("images").insert(imagesData);
+const commentsInsertions = database("comments").insert(commentsData);
+
+console.log("seeding database...");
+
+return Promise.all([artistsInsertions, wallsInsertions, consumersInsertions])
+  .then(() => {
+    return imagesInsertions;
   })
-  .catch(err => {
-    console.error(err);
-    err;
+  .then(() => {
+    return commentsInsertions;
+  })
+  .then(() => {
+    console.log("...done seeding");
   });
-
-// artists.map(artist => {
-//   console.log(artist.username);
-//   return db
-//     .query(
-//       `INSERT INTO artists (artist_username, bio) VALUES ('${
-//         artist.username
-//       }', '${artist.bio}')`
-//     )
-//     .then(res => res)
-//     .catch(err => err);
-// });
-
-// db.query(
-//   `INSERT INTO artists (artist_username, bio) VALUES ('${
-//     artists[0].username
-//   }', '${artists[0].bio}')`
-// )
-//   .then(res => res)
-//   .catch(err => err);

@@ -32,7 +32,8 @@ CREATE TABLE walls(
 
 CREATE TABLE consumers(
     consumer_id serial PRIMARY KEY,
-    consumer_username VARCHAR(255)
+    consumer_username VARCHAR(255),
+    bio TEXT
 );
 
 CREATE TABLE images(

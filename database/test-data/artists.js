@@ -1,4 +1,4 @@
 exports.artistsData = [
-  { username: "vinnie_van_G", bio: "look it up" },
-  { username: "monet", bio: "show me the monet" }
+  { artist_username: "vinnie_van_G", bio: "look it up" },
+  { artist_username: "monet", bio: "show me the monet" }
 ];

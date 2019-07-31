@@ -1,12 +1,12 @@
-module.exports = [
+exports.commentsData = [
   {
-    image_name: "ears on a wall",
     comment_body: "i liked this, it was good",
-    author: "richard_hey"
+    image_id: 1,
+    consumer_id: 1
   },
   {
-    image_name: "flowers, on a wall",
     comment_body: "i didn't like this, it wasn't good",
-    author: "jacob_ashe"
+    image_id: 2,
+    consumer_id: 2
   }
 ];

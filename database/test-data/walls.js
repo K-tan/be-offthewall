@@ -1,4 +1,4 @@
-module.exports = [
+exports.wallsData = [
   {
     image_url: "www.fake-url.co.uk",
     is_arted: true,
@@ -9,10 +9,12 @@ module.exports = [
     canvas_height: 100,
     canvas_width: 150,
     trigger_url: "www.fake-trigger.co.uk",
-    trigger_height: 20,
-    trigger_width: 20,
-    trigger_offset_X: 1,
-    trigger_offset_Y: 2
+    trigger_height_pixels: 20,
+    trigger_width_pixels: 20,
+    trigger_height_metres: 0.2,
+    trigger_width_metres: 0.2,
+    trigger_offset_x: 1,
+    trigger_offset_y: 2
   },
   {
     image_url: "www.another-fake-url.co.uk",
@@ -24,10 +26,12 @@ module.exports = [
     canvas_height: 150,
     canvas_width: 180,
     trigger_url: "www.another-fake-trigger.co.uk",
-    trigger_height: 20,
-    trigger_width: 20,
-    trigger_offset_X: 1,
-    trigger_offset_Y: 2
+    trigger_height_pixels: 20,
+    trigger_width_pixels: 20,
+    trigger_height_metres: 0.2,
+    trigger_width_metres: 0.2,
+    trigger_offset_x: 1,
+    trigger_offset_y: 2
   },
   {
     image_url: "www.yet-another-fake-url.co.uk",
@@ -39,9 +43,11 @@ module.exports = [
     canvas_height: 150,
     canvas_width: 180,
     trigger_url: "www.yet-another-fake-trigger.co.uk",
-    trigger_height: 20,
-    trigger_width: 20,
-    trigger_offset_X: 1,
-    trigger_offset_Y: 2
+    trigger_height_pixels: 20,
+    trigger_width_pixels: 20,
+    trigger_height_metres: 0.2,
+    trigger_width_metres: 0.2,
+    trigger_offset_x: 1,
+    trigger_offset_y: 2
   }
 ];

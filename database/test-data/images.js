@@ -1,16 +1,14 @@
-module.exports = [
+exports.imagesData = [
   {
     image_url: "https://www.fillmurray.com/300/200",
-    image_name: "ears on a wall",
-    wall_address: "Platform, New Station Street, Leeds, LS1 4JE",
-    artist_name: "vinnie_van_G",
-    blurb: "This is an image of a thing, that I did."
+    blurb: "This is an image of a thing, that I did.",
+    wall_id: 1,
+    artist_id: 1
   },
   {
     image_url: "https://www.placecage.com/c/300/200",
-    image_name: "flowers, on a wall",
-    wall_address: "Granary Wharf, Leeds, LS1 4GS",
-    artist_name: "monet",
-    blurb: "Art!"
+    blurb: "Art!",
+    wall_id: 2,
+    artist_id: 2
   }
 ];
