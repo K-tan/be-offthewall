@@ -42,3 +42,17 @@ exports.WallType = new GraphQLObjectType({
     created_at: { type: GraphQLString }
   }
 });
+
+exports.ImageType = new GraphQLObjectType({
+  name: "Image",
+  type: "Query",
+  description: "One image (art)",
+  fields: {
+    image_id: { type: GraphQLID },
+    image_url: { type: GraphQLString },
+    blurb: { type: GraphQLString },
+    artist_id: { type: GraphQLID },
+    wall_id: { type: GraphQLID },
+    created_at: { type: GraphQLString }
+  }
+});

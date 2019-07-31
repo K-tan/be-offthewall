@@ -1,6 +1,6 @@
 const { db } = require("../db/pgAdaptor");
 const { GraphQLID, GraphQLList, GraphQLObjectType } = require("graphql");
-const { ArtistType, WallType } = require("./type");
+const { ArtistType, WallType, ImageType } = require("./type");
 
 const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
@@ -39,6 +39,22 @@ const RootQuery = new GraphQLObjectType({
         const query = `SELECT * FROM walls`;
         return db
           .many(query)
+          .then(res => res)
+          .catch(err => err);
+      }
+    },
+    fetchImagesByWallID: {
+      type: new GraphQLList(ImageType),
+      args: {
+        wall_id: {
+          type: GraphQLID
+        }
+      },
+      resolve(parentValue, args) {
+        const query = `SELECT * FROM images WHERE wall_id=$1`;
+        const values = [Number(args.wall_id)];
+        return db
+          .many(query, values)
           .then(res => res)
           .catch(err => err);
       }
