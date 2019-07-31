@@ -1,4 +1,4 @@
-const { db } = require("../db/pgAdaptor");
+const database = require("../database/knexfile");
 const { GraphQLID, GraphQLList } = require("graphql");
 const { ImageType } = require("./index-type");
 
@@ -9,12 +9,10 @@ exports.fetchImagesByWallID = {
       type: GraphQLID
     }
   },
-  resolve(parentValue, args) {
-    const query = `SELECT * FROM images WHERE wall_id=$1`;
-    const values = [Number(args.wall_id)];
-    return db
-      .many(query, values)
-      .then(res => res)
-      .catch(err => err);
+  resolve(parentValue, { wall_id }) {
+    return database("images")
+      .select("*")
+      .where("wall_id", Number(wall_id))
+      .returning("*");
   }
 };
