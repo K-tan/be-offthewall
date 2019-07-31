@@ -1,9 +1,16 @@
-const db = require("./pgAdaptor").db;
-const knex = require("../db/pgAdaptor");
-const { artistsData } = require("../db/test-data/artists");
+const database = require("./knexfile");
 
-const artistsInsertions = knex("artists").insert(artistsData);
-return Promise.all([artistsInsertions]);
+return database
+  .select("*")
+  .from("artists")
+  .then(res => {
+    console.log(res);
+    res;
+  })
+  .catch(err => {
+    console.error(err);
+    err;
+  });
 
 // artists.map(artist => {
 //   console.log(artist.username);
