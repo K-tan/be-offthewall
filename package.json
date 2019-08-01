@@ -4,11 +4,13 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "setup-dbs": "psql -f ./database/setup.sql",
+    "setup-prod-dbs": "psql -f ./database/setup-prod.sql",
     "test": "jest --watch",
     "start": "npx nodemon",
-    "seed": "knex seed:run",
-    "reseed": "npm run setup-dbs && npm run seed"
+    "seed-test": "knex seed:run",
+    "seed-prod": "NODE_ENV=production knex seed:run",
+    "reseed-prod": "psql -f ./database/setup-prod.sql && npm run seed-prod",
+    "reseed-test": "psql -f ./database/setup-test.sql && npm run seed-test"
   },
   "repository": {
     "type": "git",
