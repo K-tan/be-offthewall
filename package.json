@@ -6,7 +6,8 @@
   "scripts": {
     "setup-dbs": "psql -f ./database/setup.sql",
     "test": "jest --watch",
-    "start": "npx nodemon"
+    "start": "npx nodemon",
+    "seed": "knex seed:run"
   },
   "repository": {
     "type": "git",

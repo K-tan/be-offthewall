@@ -4,7 +4,9 @@ const knex = require("knex");
 
 const config = {
   client: "pg",
-  seeds: "./seedfile",
+  seeds: {
+    directory: "./database"
+  },
   connection: {
     database: "be_offthewall_test"
   }

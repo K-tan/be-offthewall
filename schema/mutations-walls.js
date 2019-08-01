@@ -1,4 +1,4 @@
-const database = require("../database/knexfile");
+const database = require("../knexfile");
 const { GraphQLFloat, GraphQLInt, GraphQLString } = require("graphql");
 const { WallType } = require("./index-type");
 

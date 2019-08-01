@@ -7,27 +7,23 @@ CREATE DATABASE be_offthewall_test;
 CREATE TABLE artists(
     artist_id serial PRIMARY KEY,
     artist_username VARCHAR(255),
-    
+    social_link VARCHAR(255),
     bio TEXT
 );
 
 CREATE TABLE walls(
     wall_id serial PRIMARY KEY,
-    image_url TEXT,
-    is_arted BOOLEAN DEFAULT false,
+    canvas_url TEXT,
     latitude FLOAT,
     longitude FLOAT,
     street_address TEXT,
     info TEXT,
-    canvas_height INTEGER,
-    canvas_width INTEGER,
-    trigger_url TEXT,
-    trigger_height_pixels INTEGER,
-    trigger_width_pixels INTEGER,
-    trigger_height_metres FLOAT,
-    trigger_width_metres FLOAT,
-    trigger_offset_x INTEGER,
-    trigger_offset_y INTEGER,
+    canvas_height FLOAT,
+    canvas_width FLOAT,
+    trigger_height FLOAT,
+    trigger_width FLOAT,
+    trigger_offset_x FLOAT,
+    trigger_offset_y FLOAT,
     created_at TIMESTAMP DEFAULT NOW()
 );
 
