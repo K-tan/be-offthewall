@@ -1,16 +1,6 @@
 const { DB_URL } = process.env;
 const ENV = process.env.NODE_ENV || "test";
 
-// const dbConfig = {
-//   client: "pg",
-//   seeds: {
-//     directory: "./database/seeds"
-//   },
-//   connection: {
-//     database: "be_offthewall_test"
-//   }
-// };
-
 const baseConfig = {
   client: "pg",
   migrations: {
@@ -33,5 +23,3 @@ const customConfig = {
 };
 
 module.exports = { ...customConfig[ENV], ...baseConfig };
-
-// module.exports = dbConfig;
