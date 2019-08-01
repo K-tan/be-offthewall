@@ -1,22 +1,34 @@
-const { DB_URL } = process.env;
-const ENV = process.env.NODE_ENV || "test";
+// const { DB_URL } = process.env;
+// const ENV = process.env.NODE_ENV || "test";
 
-const baseConfig = {
+const dbConfig = {
   client: "pg",
   seeds: {
     directory: "./database/seeds"
-  }
-};
-
-const customConfig = {
-  test: {
-    connection: {
-      database: "be_offthewall_test"
-    }
   },
-  production: {
-    connection: `${DB_URL}?ssl=true`
+  connection: {
+    database: "be_offthewall_test"
   }
 };
 
-module.exports = { ...customConfig[ENV], ...baseConfig };
+// const baseConfig = {
+//   client: "pg",
+//   seeds: {
+//     directory: "./database/seeds"
+//   }
+// };
+
+// const customConfig = {
+//   test: {
+//     connection: {
+//       database: "be_offthewall_test"
+//     }
+//   },
+//   production: {
+//     connection: `${DB_URL}?ssl=true`
+//   }
+// };
+
+// module.exports = { ...customConfig[ENV], ...baseConfig };
+
+module.exports = dbConfig;

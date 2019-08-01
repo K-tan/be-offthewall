@@ -1,4 +1,4 @@
-const ENV = process.env.NODE_ENV || "test";
+// const ENV = process.env.NODE_ENV || "test";
 const knex = require("knex");
 
 const dbConfig = require("./knexfile");
@@ -11,7 +11,5 @@ const dbConfig = require("./knexfile");
 //   : require("./knexfile");
 
 const database = knex(dbConfig);
-
-console.log(dbConfig);
 
 module.exports = database;
