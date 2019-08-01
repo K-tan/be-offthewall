@@ -5,10 +5,11 @@
   "main": "app.js",
   "scripts": {
     "setup-prod-dbs": "psql -f ./database/setup-prod.sql",
+    "setup-test-dbs": "psql -f ./database/setup-test.sql",
     "test": "jest --watch",
     "start": "npx nodemon",
     "seed-test": "knex seed:run",
-    "seed-prod": "NODE_ENV=production knex seed:run",
+    "seed-prod": "NODE_ENV=production DB_URL=$(heroku config:get DATABASE_URL) knex seed:run",
     "reseed-prod": "psql -f ./database/setup-prod.sql && npm run seed-prod",
     "reseed-test": "psql -f ./database/setup-test.sql && npm run seed-test"
   },

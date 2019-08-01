@@ -4,7 +4,7 @@ const ENV = process.env.NODE_ENV || "test";
 const baseConfig = {
   client: "pg",
   seeds: {
-    directory: "./database/"
+    directory: "./database/seeds"
   }
 };
 

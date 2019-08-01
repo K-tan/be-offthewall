@@ -1,11 +1,11 @@
-const ENV = process.env.NODE_ENV || "test";
-
-const database = require("../connection");
-const { artistsData } = require(`./${ENV}-data/artists`);
-const { wallsData } = require(`./${ENV}-data/walls`);
-const { consumersData } = require(`./${ENV}-data/consumers`);
-const { imagesData } = require(`./${ENV}-data/images`);
-const { commentsData } = require(`./${ENV}-data/comments`);
+const database = require("../../connection");
+const {
+  artistsData,
+  commentsData,
+  consumersData,
+  imagesData,
+  wallsData
+} = require("../index.js");
 
 const artistsInsertions = database("artists").insert(artistsData);
 const wallsInsertions = database("walls").insert(wallsData);
