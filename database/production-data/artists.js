@@ -1,4 +1,4 @@
-exports.artistsData = [
+const artistsData = [
   {
     artist_username: "bobbirae",
     social_facebook: null,
@@ -16,3 +16,5 @@ exports.artistsData = [
     bio: "I like drawing animals."
   }
 ];
+
+module.exports = artistsData;

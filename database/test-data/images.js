@@ -1,4 +1,4 @@
-exports.imagesData = [
+const imagesData = [
   {
     image_url: "https://www.fillmurray.com/300/200",
     blurb: "This is an image of a thing, that I did.",
@@ -12,3 +12,5 @@ exports.imagesData = [
     artist_id: 2
   }
 ];
+
+module.exports = imagesData;

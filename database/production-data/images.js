@@ -1,4 +1,4 @@
-exports.imagesData = [
+const imagesData = [
   {
     image_url:
       "https://firebasestorage.googleapis.com/v0/b/slickproject-fbaad.appspot.com/o/atmydesk_png.png?alt=media&token=93218ef4-a171-420c-8877-0d9d1f790b42",
@@ -49,3 +49,5 @@ exports.imagesData = [
     artist_id: 2
   }
 ];
+
+module.exports = imagesData;

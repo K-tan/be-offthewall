@@ -1,4 +1,4 @@
-exports.artistsData = [
+const artistsData = [
   {
     artist_username: "vinnie_van_G",
     social_facebook: "facebook.com/vvg",
@@ -16,3 +16,5 @@ exports.artistsData = [
     bio: "show me the monet"
   }
 ];
+
+module.exports = artistsData;

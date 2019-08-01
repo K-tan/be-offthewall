@@ -4,14 +4,18 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "setup-prod-dbs": "psql -f ./database/setup-prod.sql",
-    "setup-test-dbs": "psql -f ./database/setup-test.sql",
+    "setup-test-dbs": "psql -f ./database/setup.sql",
     "test": "jest --watch",
-    "start": "npx nodemon",
+    "start": "node listen.js",
     "seed-test": "knex seed:run",
     "seed-prod": "NODE_ENV=production DB_URL=$(heroku config:get DATABASE_URL) knex seed:run",
     "reseed-prod": "psql -f ./database/setup-prod.sql && npm run seed-prod",
-    "reseed-test": "psql -f ./database/setup-test.sql && npm run seed-test"
+    "reseed-test": "psql -f ./database/setup-test.sql && npm run seed-test",
+    "migrate-make": "knex migrate:make",
+    "migrate-latest": "npx knex migrate:latest",
+    "migrate-rollback": "npx knex migrate:rollback",
+    "migrate-latest:prod": "NODE_ENV=production DB_URL=$(heroku config:get DATABASE_URL) knex migrate:latest",
+    "migrate-rollback:prod": "NODE_ENV=production DB_URL=$(heroku config:get DATABASE_URL) knex migrate:rollback"
   },
   "repository": {
     "type": "git",

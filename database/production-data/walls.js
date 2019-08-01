@@ -1,4 +1,4 @@
-exports.wallsData = [
+const wallsData = [
   {
     canvas_url: "www.fake-url.co.uk",
     latitude: 53.7949778,
@@ -13,3 +13,5 @@ exports.wallsData = [
     trigger_offset_y: 0.29
   }
 ];
+
+module.exports = wallsData;

@@ -1,8 +1,8 @@
 const express = require("express");
 const expressGraphQL = require("express-graphql");
 // const { GraphQLSchema } = require("graphql");
-const { migrate } = require("graphql-migrate");
-const dbConfig = require("./knexfile");
+// const { migrate } = require("graphql-migrate");
+// const dbConfig = require("./knexfile");
 // const { query } = require("./schema/index-query");
 // const { mutation } = require("./schema/index-mutations");
 const { schema, root } = require("./schema");
@@ -14,10 +14,9 @@ const { schema, root } = require("./schema");
 //   // types
 // });
 
-migrate(dbConfig, schema).then(() => {
-  console.log(schema);
-  console.log("your database is up to date");
-});
+// migrate(dbConfig, schema).then(() => {
+//   console.log("your database is up to date");
+// });
 
 const app = express();
 
@@ -30,6 +29,4 @@ app.use(
   })
 );
 
-app.listen(3000, () =>
-  console.log("GraphQl server now running on localhost:3000")
-);
+module.exports = app;

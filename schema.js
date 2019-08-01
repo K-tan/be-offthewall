@@ -67,6 +67,10 @@ const root = {
       .where("wall_id", Number(wall_id))
       .returning("*");
   }
+  //   ,
+  //   addArtist: function({artist_id, artist_username}) {
+  //       return database("artists")
+  //   }
 };
 
 module.exports = { schema, root };

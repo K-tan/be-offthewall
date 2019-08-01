@@ -1,4 +1,4 @@
-exports.commentsData = [
+const commentsData = [
   {
     comment_body: "i liked this, it was good",
     image_id: 1,
@@ -10,3 +10,5 @@ exports.commentsData = [
     consumer_id: 2
   }
 ];
+
+module.exports = commentsData;
