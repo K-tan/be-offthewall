@@ -1,8 +1,8 @@
-const database = require("../knexfile");
+const database = require("../connection");
 const { GraphQLID, GraphQLList } = require("graphql");
 const { ArtistType } = require("./index-type");
 
-exports.fetchArtist = {
+exports.fetchArtistByID = {
   type: ArtistType,
   args: {
     artist_id: {

@@ -1,5 +1,4 @@
-const knex = require("knex");
-const database = require("../knexfile");
+const database = require("../connection");
 const { artistsData } = require("./test-data/artists");
 const { wallsData } = require("./test-data/walls");
 const { consumersData } = require("./test-data/consumers");
@@ -9,19 +8,13 @@ const { commentsData } = require("./test-data/comments");
 const artistsInsertions = database("artists").insert(artistsData);
 const wallsInsertions = database("walls").insert(wallsData);
 const consumersInsertions = database("consumers").insert(consumersData);
-const imagesInsertions = database("images").insert(imagesData);
-const commentsInsertions = database("comments").insert(commentsData);
 
-exports.seed = (knex, Promise) => {
-  console.log("seeding database...");
+exports.seed = () => {
   return Promise.all([artistsInsertions, wallsInsertions, consumersInsertions])
     .then(() => {
-      return imagesInsertions;
+      return database("images").insert(imagesData);
     })
     .then(() => {
-      return commentsInsertions;
-    })
-    .then(() => {
-      console.log("...done seeding");
+      return database("comments").insert(commentsData);
     });
 };

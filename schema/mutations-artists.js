@@ -1,4 +1,4 @@
-const database = require("../knexfile");
+const database = require("../connection");
 const { GraphQLID, GraphQLString } = require("graphql");
 const { ArtistType } = require("./index-type");
 

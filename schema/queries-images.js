@@ -1,6 +1,15 @@
-const database = require("../knexfile");
+const database = require("../connection");
 const { GraphQLID, GraphQLList } = require("graphql");
 const { ImageType } = require("./index-type");
+
+exports.fetchAllImages = {
+  type: new GraphQLList(ImageType),
+  resolve() {
+    return database("images")
+      .select("*")
+      .returning("*");
+  }
+};
 
 exports.fetchImagesByWallID = {
   type: new GraphQLList(ImageType),
