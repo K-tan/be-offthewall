@@ -4,9 +4,15 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "setup-dbs": "psql -f ./db/setup.sql",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx nodemon"
+    "migrate-latest": "npx knex migrate:latest",
+    "migrate-latest:prod": "NODE_ENV=production DB_URL=$(heroku config:get DATABASE_URL) knex migrate:latest",
+    "migrate-make": "knex migrate:make",
+    "migrate-rollback": "npx knex migrate:rollback",
+    "migrate-rollback:prod": "NODE_ENV=production DB_URL=$(heroku config:get DATABASE_URL) knex migrate:rollback",
+    "seed:prod": "NODE_ENV=production DB_URL=$(heroku config:get DATABASE_URL) knex seed:run",
+    "setup-test-dbs": "psql -f ./database/setup.sql && knex seed:run",
+    "start": "node listen.js",
+    "test": "jest --watch"
   },
   "repository": {
     "type": "git",
@@ -20,15 +26,14 @@
   },
   "homepage": "https://github.com/K-tan/be-offthewall#readme",
   "dependencies": {
-    "dotenv": "^8.0.0",
     "express": "^4.17.1",
     "express-graphql": "^0.9.0",
     "graphql": "^14.4.2",
     "knex": "^0.19.1",
-    "pg": "^7.12.0",
-    "pg-promise": "^9.0.0"
+    "pg": "^7.12.0"
   },
   "devDependencies": {
+    "jest": "^24.8.0",
     "nodemon": "^1.19.1"
   }
 }
