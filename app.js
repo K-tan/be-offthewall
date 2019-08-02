@@ -1,16 +1,22 @@
+const graphql = require("graphql");
 const express = require("express");
 const expressGraphQL = require("express-graphql");
-const { schema, root } = require("./schema/schema");
+const { GraphQLSchema } = graphql;
+const { query } = require("./schemas/query");
+const { mutation } = require("./schemas/mutation");
 
+const schema = new GraphQLSchema({
+  query,
+  mutation
+});
 const app = express();
 
 app.use(
   "/",
   expressGraphQL({
     schema,
-    rootValue: root,
     graphiql: true
   })
 );
 
-module.exports = app;
+app.listen(3000, () => console.log("GraphQl server running on localhost:3000"));
