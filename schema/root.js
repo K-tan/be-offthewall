@@ -13,3 +13,9 @@ exports.fetchImagesByWallId = function({ wall_id }) {
     .where("wall_id", Number(wall_id))
     .returning("*");
 };
+
+exports.fetchAllWalls = function({}) {
+  return database("walls")
+    .select("*")
+    .returning("*");
+};

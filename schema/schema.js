@@ -7,7 +7,7 @@ const {
   commentType,
   queryType
 } = require("./types");
-const { fetchArtist, fetchImagesByWallId } = require("./root");
+const { fetchArtist, fetchImagesByWallId, fetchAllWalls } = require("./root");
 
 const schema = buildSchema(`
     ${artistType}
@@ -20,7 +20,8 @@ const schema = buildSchema(`
 
 const root = {
   fetchArtist,
-  fetchImagesByWallId
+  fetchImagesByWallId,
+  fetchAllWalls
 };
 
 module.exports = { schema, root };
