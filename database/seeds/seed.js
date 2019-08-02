@@ -7,12 +7,6 @@ const {
   wallsData
 } = require("../index.js");
 
-// const { artistsData } = require("../test-data/artists");
-// const { commentsData } = require("../test-data/comments");
-// const { consumersData } = require("../test-data/consumers");
-// const { imagesData } = require("../test-data/images");
-// const { wallsData } = require("../test-data/walls");
-
 exports.seed = () => {
   return database.migrate
     .rollback()
@@ -30,7 +24,7 @@ exports.seed = () => {
     .then(() => {
       return database("images").insert(imagesData);
     })
-    .then(() => {
+    .then(res => {
       return database("comments").insert(commentsData);
     });
 };
