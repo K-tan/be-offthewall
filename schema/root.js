@@ -25,8 +25,7 @@ exports.addImage = function({
   image_url,
   blurb,
   wall_id,
-  artist_id,
-  created_at
+  artist_id
 }) {
   return database("images")
     .insert({
@@ -34,8 +33,7 @@ exports.addImage = function({
       image_url,
       blurb,
       wall_id,
-      artist_id,
-      created_at
+      artist_id
     })
     .returning("*");
 };

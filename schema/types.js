@@ -55,5 +55,5 @@ exports.queryType = `type Query {
 }`;
 
 exports.mutationType = `type Mutation {
-    addImage(image_id: Int!, image_url: String!, blurb: String, wall_id: Int!, artist_id:Int!, created_at: String!): Image
+    addImage(image_id: Int!, image_url: String!, blurb: String, wall_id: Int!, artist_id:Int!): Image
 }`;
