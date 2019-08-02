@@ -25,15 +25,17 @@ exports.addImage = function({
   image_url,
   blurb,
   wall_id,
-  artist_id
+  artist_id,
+  created_at
 }) {
   return database("images")
     .insert({
       image_id,
       image_url,
       blurb,
+      wall_id,
       artist_id,
-      wall_id
+      created_at
     })
     .returning("*");
 };
