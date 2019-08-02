@@ -33,7 +33,7 @@ exports.consumerType = `type Consumer {
 }`;
 
 exports.imageType = `type Image {
-    image_id: ID! @autogenerate
+    image_id: ID!
     image_url: String!
     blurb: String
     wall_id: Int!
