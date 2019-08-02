@@ -19,3 +19,21 @@ exports.fetchAllWalls = function({}) {
     .select("*")
     .returning("*");
 };
+
+exports.addImage = function({
+  image_id,
+  image_url,
+  blurb,
+  wall_id,
+  artist_id
+}) {
+  return database("images")
+    .insert({
+      image_id,
+      image_url,
+      blurb,
+      artist_id,
+      wall_id
+    })
+    .returning("*");
+};

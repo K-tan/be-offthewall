@@ -2,6 +2,7 @@ exports.up = function(knex, Promise) {
   return knex.schema.createTable("artists", artistsTable => {
     artistsTable.increments("artist_id").primary();
     artistsTable.string("artist_username").notNullable();
+    artistsTable.string("artist_apiKey").notNullable();
     artistsTable.string("social_facebook");
     artistsTable.string("social_instagram");
     artistsTable.string("social_twitter");

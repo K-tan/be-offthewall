@@ -5,9 +5,15 @@ const {
   consumerType,
   imageType,
   commentType,
-  queryType
+  queryType,
+  mutationType
 } = require("./types");
-const { fetchArtist, fetchImagesByWallId, fetchAllWalls } = require("./root");
+const {
+  fetchArtist,
+  fetchImagesByWallId,
+  fetchAllWalls,
+  addImage
+} = require("./root");
 
 const schema = buildSchema(`
     ${artistType}
@@ -16,12 +22,14 @@ const schema = buildSchema(`
     ${imageType}
     ${commentType}
     ${queryType}
+    ${mutationType}
 `);
 
 const root = {
   fetchArtist,
   fetchImagesByWallId,
-  fetchAllWalls
+  fetchAllWalls,
+  addImage
 };
 
 module.exports = { schema, root };

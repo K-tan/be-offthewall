@@ -1,6 +1,7 @@
 exports.artistType = `type Artist {
     artist_id: ID!
     artist_username: String!
+    artist_apiKey: String!
     social_facebook: String
     social_instagram: String
     social_twitter: String
@@ -32,7 +33,7 @@ exports.consumerType = `type Consumer {
 }`;
 
 exports.imageType = `type Image {
-    image_id: ID!
+    image_id: ID! @autogenerate
     image_url: String!
     blurb: String
     wall_id: Int!
@@ -51,4 +52,8 @@ exports.queryType = `type Query {
     fetchArtist(artist_id: Int!): Artist
     fetchImagesByWallId(wall_id: Int!): [Image]
     fetchAllWalls: [Wall]
+}`;
+
+exports.mutationType = `type Mutation {
+    addImage(image_id: Int!, image_url: String!, blurb: String, wall_id: Int!, artist_id:Int!): Image
 }`;
