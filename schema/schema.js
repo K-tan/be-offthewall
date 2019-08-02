@@ -10,6 +10,7 @@ const {
 } = require("./types");
 const {
   fetchArtist,
+  fetchAllImages,
   fetchImagesByWallId,
   fetchAllWalls,
   addImage
@@ -27,6 +28,7 @@ const schema = buildSchema(`
 
 const root = {
   fetchArtist,
+  fetchAllImages,
   fetchImagesByWallId,
   fetchAllWalls,
   addImage

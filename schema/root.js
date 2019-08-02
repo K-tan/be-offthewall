@@ -7,6 +7,12 @@ exports.fetchArtist = function({ artist_id }) {
     .returning("*");
 };
 
+exports.fetchAllImages = function({}) {
+  return database("images")
+    .select("*")
+    .returning("*");
+};
+
 exports.fetchImagesByWallId = function({ wall_id }) {
   return database("images")
     .select("*")
