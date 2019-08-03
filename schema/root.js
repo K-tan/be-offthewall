@@ -13,7 +13,12 @@ exports.fetchAllImages = function({}) {
     .returning("*");
 };
 
-exports.fetchImagesByWallId = () => database.images;
+exports.fetchImagesByWallId = ({ wall_id }) => {
+  return database("images")
+    .select("*")
+    .where("wall_id", Number(wall_id))
+    .returning("*");
+};
 
 exports.fetchAllWalls = function({}) {
   return database("walls")
