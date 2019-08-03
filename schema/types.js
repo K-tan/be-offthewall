@@ -51,7 +51,7 @@ exports.commentType = `type Comment {
 exports.queryType = `type Query {
     fetchArtist(artist_id: Int!): Artist
     fetchAllImages: [Image]
-    fetchImagesByWallId(wall_id: Int!): [Image]
+    fetchImagesByWallId: [Image]
     fetchAllWalls: [Wall]
 }`;
 
