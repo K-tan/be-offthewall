@@ -35,7 +35,7 @@ exports.imageType = `type Image {
     image_id: ID!
     image_url: String!
     blurb: String
-    wall_id: Int!
+    wall_id: Wall
     artist_id: Int!
     created_at: String!
 }`;
