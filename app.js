@@ -29,6 +29,7 @@ const app = new ApolloServer({
     Image,
     Wall
   },
+  introspection: true,
   playground: true
 });
 
