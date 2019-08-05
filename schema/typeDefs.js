@@ -1,7 +1,6 @@
 exports.artistType = `type Artist {
     artist_id: ID!
     artist_username: String!
-    artist_apiKey: String!
     social_facebook: String
     social_instagram: String
     social_twitter: String
@@ -49,12 +48,13 @@ exports.commentType = `type Comment {
 }`;
 
 exports.queryType = `type Query {
-    fetchArtist(artist_id: Int!): Artist
+    fetchArtistById(artist_id: ID!): Artist
     fetchAllImages: [Image]
     fetchImagesByWallId(wall_id: Int!): [Image]
     fetchAllWalls: [Wall]
+    fetchWallById(wall_id: ID!): Wall
 }`;
 
 exports.mutationType = `type Mutation {
-    addImage(image_id: Int!, image_url: String!, blurb: String, wall_id: Int!, artist_id:Int!): Image
+    addImage(image_url: String!, blurb: String, wall_id: Int!, artist_id:Int!): [Image]
 }`;
