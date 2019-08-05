@@ -2,6 +2,7 @@ const { ApolloServer, gql } = require("apollo-server");
 const {
   queryType,
   mutationType,
+  loginResponseType,
   artistType,
   commentType,
   consumerType,
@@ -17,6 +18,7 @@ const app = new ApolloServer({
   typeDefs: gql`
     ${queryType}
     ${mutationType}
+    ${loginResponseType}
     ${artistType}
     ${commentType}
     ${consumerType}
@@ -29,6 +31,7 @@ const app = new ApolloServer({
     Image,
     Wall
   },
+  context: ({ req, res }) => {},
   introspection: true,
   playground: true
 });

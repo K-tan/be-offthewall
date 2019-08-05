@@ -11,7 +11,7 @@
     "migrate-rollback:prod": "NODE_ENV=production DB_URL=$(heroku config:get DATABASE_URL) knex migrate:rollback",
     "seed:prod": "NODE_ENV=production && DB_URL=$(heroku config:get DATABASE_URL) && knex seed:run",
     "setup-test-dbs": "psql -f ./database/setup.sql && knex seed:run",
-    "start": "node listen.js",
+    "start": "nodemon listen.js",
     "test": "jest --watch"
   },
   "repository": {
@@ -27,7 +27,9 @@
   "homepage": "https://github.com/K-tan/be-offthewall#readme",
   "dependencies": {
     "apollo-server": "^2.8.1",
+    "bcryptjs": "^2.4.3",
     "graphql": "^14.4.2",
+    "jsonwebtoken": "^8.5.1",
     "knex": "^0.19.1",
     "pg": "^7.12.0",
     "supertest": "^4.0.2"

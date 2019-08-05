@@ -1,4 +1,6 @@
 const database = require("../connection");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 exports.queries = {
   Query: {
@@ -32,7 +34,48 @@ exports.mutations = {
           wall_id,
           artist_id
         })
-        .returning("*")
+        .returning("*"),
+    login: async (
+      parent,
+      { artist_username, artist_password },
+      context,
+      info
+    ) => {
+      console.log(info.fieldNodes[0].arguments);
+      const feUserName = info.fieldNodes[0].arguments[0].value.value;
+      const fePassword = info.fieldNodes[0].arguments[1].value.value;
+      console.log(feUserName, fePassword);
+      const user = database("artists")
+        .first("*")
+        .where("artist_username", artist_username)
+        .returning("*");
+
+      if (!user) {
+        console.log(new Error("Invalid Login"));
+      }
+
+      // const passwordMatch = bcrypt.compare(
+      //   artist_password,
+      //   user.artist_password,
+      //   (err, res) => {
+      //     console.log(err, res);
+      //   }
+      // );
+      // if (!passwordMatch) {
+      //   throw new Error("Invalid Login");
+      // }
+      // const token = jwt.sign(
+      //   {
+      //     id: user.artist_id,
+      //     username: user.artist_username
+      //   },
+      //   { expiresIn: "30d" }
+      // );
+      // return {
+      //   token,
+      //   user
+      // };
+    }
   }
 };
 
@@ -53,6 +96,17 @@ exports.wallNest = {
         .select("*")
         .where("wall_id", parent.wall_id);
       return wall;
+    }
+  }
+};
+
+exports.artistNest = {
+  Artist: {
+    async artists(parent) {
+      const artist = database("images")
+        .select("*")
+        .where("artist_id", parent.artist_id);
+      return artist;
     }
   }
 };

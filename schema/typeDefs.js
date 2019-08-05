@@ -1,11 +1,13 @@
 exports.artistType = `type Artist {
     artist_id: ID!
     artist_username: String!
+    artist_password: String!
     social_facebook: String
     social_instagram: String
     social_twitter: String
     social_website: String
     bio: String
+    images: [Image]
 }`;
 
 exports.wallType = `type Wall {
@@ -57,4 +59,10 @@ exports.queryType = `type Query {
 
 exports.mutationType = `type Mutation {
     addImage(image_url: String!, blurb: String, wall_id: Int!, artist_id:Int!): [Image]
+    login(artist_username: String!, artist_password: String!): LoginResponse!
+}`;
+
+exports.loginResponseType = `type LoginResponse {
+    token: String
+    user: Artist
 }`;
