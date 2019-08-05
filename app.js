@@ -28,7 +28,8 @@ const app = new ApolloServer({
     Mutation,
     Image,
     Wall
-  }
+  },
+  playground: true
 });
 
 module.exports = { app };
