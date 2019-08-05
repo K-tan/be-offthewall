@@ -8,9 +8,9 @@ const imagesData = [
   },
   {
     image_url:
-      "https://firebasestorage.googleapis.com/v0/b/slickproject-fbaad.appspot.com/o/birthdaystretches_png.png?alt=media&token=67fa847e-a673-4f2a-820e-86cecd3e3be5",
+      "https://firebasestorage.googleapis.com/v0/b/slickproject-fbaad.appspot.com/o/birthdaystretches_aql.png?alt=media&token=ea4719bc-8f46-4671-a158-c50179b681a4",
     blurb: null,
-    wall_id: 1,
+    wall_id: 2,
     artist_id: 1
   },
   {
@@ -24,7 +24,7 @@ const imagesData = [
     image_url:
       "https://firebasestorage.googleapis.com/v0/b/slickproject-fbaad.appspot.com/o/nomorereplies_png.png?alt=media&token=86902eaf-620d-40a1-8b7c-96489d5199d5",
     blurb: null,
-    wall_id: 1,
+    wall_id: 3,
     artist_id: 1
   },
   {
@@ -45,7 +45,28 @@ const imagesData = [
     image_url:
       "https://firebasestorage.googleapis.com/v0/b/slickproject-fbaad.appspot.com/o/raven_trans.png?alt=media&token=62606cf6-0f39-4aed-a86e-6e6df9043001",
     blurb: "A large corvid",
+    wall_id: 4,
+    artist_id: 2
+  },
+  {
+    image_url:
+      "https://firebasestorage.googleapis.com/v0/b/slickproject-fbaad.appspot.com/o/fox_nc.png?alt=media&token=444f18f9-69ed-41ec-ad53-8cf47d00e026",
+    blurb: "a fox",
     wall_id: 1,
+    artist_id: 2
+  },
+  {
+    image_url:
+      "https://firebasestorage.googleapis.com/v0/b/slickproject-fbaad.appspot.com/o/fox_quadrapeds.png?alt=media&token=1c3f9c4a-0170-492d-8b2f-9db333f5911c",
+    blurb: "a fox",
+    wall_id: 4,
+    artist_id: 2
+  },
+  {
+    image_url:
+      "https://firebasestorage.googleapis.com/v0/b/slickproject-fbaad.appspot.com/o/music_aql.jpg?alt=media&token=da49e51a-764d-4a31-b6f0-3e041403c5e7",
+    blurb: "music",
+    wall_id: 2,
     artist_id: 2
   }
 ];
