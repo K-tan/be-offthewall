@@ -1,3 +1,4 @@
+const { KEY } = process.env;
 const database = require("../connection");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -35,46 +36,34 @@ exports.mutations = {
           artist_id
         })
         .returning("*"),
-    login: async (
-      parent,
-      { artist_username, artist_password },
-      context,
-      info
-    ) => {
-      console.log(info.fieldNodes[0].arguments);
-      const feUserName = info.fieldNodes[0].arguments[0].value.value;
-      const fePassword = info.fieldNodes[0].arguments[1].value.value;
-      console.log(feUserName, fePassword);
-      const user = database("artists")
-        .first("*")
+    login: async (parent, { artist_username, artist_password }) => {
+      let user;
+      await database("artists")
+        .first("artist_id", "artist_password")
         .where("artist_username", artist_username)
-        .returning("*");
-
+        .returning("*")
+        .then(res => {
+          user = res;
+        });
       if (!user) {
         console.log(new Error("Invalid Login"));
       }
-
-      // const passwordMatch = bcrypt.compare(
-      //   artist_password,
-      //   user.artist_password,
-      //   (err, res) => {
-      //     console.log(err, res);
-      //   }
-      // );
-      // if (!passwordMatch) {
-      //   throw new Error("Invalid Login");
-      // }
-      // const token = jwt.sign(
-      //   {
-      //     id: user.artist_id,
-      //     username: user.artist_username
-      //   },
-      //   { expiresIn: "30d" }
-      // );
-      // return {
-      //   token,
-      //   user
-      // };
+      const passwordMatch = await bcrypt.compare(
+        artist_password,
+        user.artist_password
+      );
+      if (!passwordMatch) {
+        console.log(new Error("Invalid Login"));
+      }
+      const token = jwt.sign(
+        {
+          id: user.artist_id,
+          username: user.artist_username
+        },
+        KEY,
+        { expiresIn: "30d" }
+      );
+      return [{ token, user }];
     }
   }
 };
