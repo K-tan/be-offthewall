@@ -1,39 +1,34 @@
-const { KEY } = process.env;
-// const database = require("../connection");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const { KEY } = process.env;
 
-exports.queries = {
+exports.resolvers = {
   Query: {
-    fetchArtistById: (parent, { artist_id }, context) =>
-      context
-        .database("artists")
+    fetchArtistById: (parent, { artist_id }, { database }) =>
+      database("artists")
         .first("*")
         .where("artist_id", artist_id),
-    fetchWallById: (parent, { wall_id }, context) =>
-      context
-        .database("walls")
+    fetchWallById: (parent, { wall_id }, { database }) =>
+      database("walls")
         .first("*")
         .where("wall_id", wall_id),
-    fetchAllWalls: context => context.database("walls").select("*"),
-    fetchAllImages: context =>
-      context
-        .database("images")
+    fetchAllWalls: ({ database }) => database("walls").select("*"),
+    fetchAllImages: ({ database }) =>
+      database("images")
         .select("*")
         .orderBy("image_id"),
-    fetchImagesByWallId: (parent, { wall_id }, context) =>
-      context
-        .database("images")
+    fetchImagesByWallId: (parent, { wall_id }, { database }) =>
+      database("images")
         .select("*")
         .where("wall_id", wall_id)
-  }
-};
-
-exports.mutations = {
+  },
   Mutation: {
-    addImage: (parent, { image_url, blurb, wall_id, artist_id }, context) =>
-      context
-        .database("images")
+    addImage: (
+      parent,
+      { image_url, blurb, wall_id, artist_id },
+      { database }
+    ) =>
+      database("images")
         .insert({
           image_url,
           blurb,
@@ -41,9 +36,12 @@ exports.mutations = {
           artist_id
         })
         .returning("*"),
-    login: async (parent, { artist_username, artist_password }, context) => {
-      const user = await context
-        .database("artists")
+    login: async (
+      parent,
+      { artist_username, artist_password },
+      { database }
+    ) => {
+      const user = await database("artists")
         .first("artist_id", "artist_username", "artist_password")
         .where("artist_username", artist_username)
         .returning("*");
@@ -69,39 +67,26 @@ exports.mutations = {
       );
       return { token, user };
     }
-  }
-};
-
-exports.imageNest = {
+  },
   Image: {
-    wall_id: (parent, args, context) =>
-      context
-        .database("walls")
+    wall_id: ({ wall_id }, args, { database }) =>
+      database("walls")
         .first("*")
-        .where("wall_id", parent.wall_id)
-  }
-};
-
-exports.wallNest = {
+        .where("wall_id", wall_id)
+  },
   Wall: {
-    async images(parent, args, context) {
-      // await new Promise(resolve => setTimeout(resolve, 500));
-      const wall = context
-        .database("images")
+    async images({ wall_id }, args, { database }) {
+      const wall = database("images")
         .select("*")
-        .where("wall_id", parent.wall_id);
+        .where("wall_id", wall_id);
       return wall;
     }
-  }
-};
-
-exports.artistNest = {
+  },
   Artist: {
-    async artists(parent) {
-      const artist = context
-        .database("images")
+    async artists({ artist_id }, args, { database }) {
+      const artist = database("images")
         .select("*")
-        .where("artist_id", parent.artist_id);
+        .where("artist_id", artist_id);
       return artist;
     }
   }

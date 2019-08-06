@@ -1,32 +1,18 @@
-const database = require("./connection");
-const { ApolloServer, gql } = require("apollo-server");
 require("dotenv").config();
-const getUser = require("./utils");
+const { ApolloServer, gql } = require("apollo-server");
+const database = require("./connection");
+const { getUser } = require("./utils");
+const { typeDefs } = require("./schema/typeDefs");
 const {
-  queryType,
-  mutationType,
-  loginResponseType,
-  artistType,
-  commentType,
-  consumerType,
-  imageType,
-  wallType
-} = require("./schema/typeDefs");
-const { Query } = require("./schema/resolvers").queries;
-const { Mutation } = require("./schema/resolvers").mutations;
-const { Image } = require("./schema/resolvers").imageNest;
-const { Wall } = require("./schema/resolvers").wallNest;
+  Query,
+  Mutation,
+  Image,
+  Wall
+} = require("./schema/resolvers").resolvers;
 
-const app = new ApolloServer({
+exports.app = new ApolloServer({
   typeDefs: gql`
-    ${queryType}
-    ${mutationType}
-    ${loginResponseType}
-    ${artistType}
-    ${commentType}
-    ${consumerType}
-    ${imageType}
-    ${wallType}
+    ${typeDefs}
   `,
   resolvers: {
     Query,
@@ -42,5 +28,3 @@ const app = new ApolloServer({
   introspection: true,
   playground: true
 });
-
-module.exports = { app };
