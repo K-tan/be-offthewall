@@ -1,4 +1,5 @@
 const bcrypt = require("bcryptjs");
+const database = require("./connection");
 const jwt = require("jsonwebtoken");
 const { KEY } = process.env;
 
@@ -13,7 +14,7 @@ exports.resolvers = {
         .first("*")
         .where("wall_id", wall_id),
     fetchAllWalls: ({ database }) => database("walls").select("*"),
-    fetchAllImages: ({ database }) =>
+    fetchAllImages: () =>
       database("images")
         .select("*")
         .orderBy("image_id"),
