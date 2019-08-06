@@ -1,7 +1,7 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { KEY } = process.env;
-const database = require("./connection");
+const database = require("../connection");
 exports.resolvers = {
   Query: {
     fetchArtistById: (parent, { artist_id }) =>
