@@ -1,7 +1,7 @@
 const artistsData = [
   {
     artist_username: "vinnie_van_G",
-    artist_apiKey: "null",
+    artist_password: "password",
     social_facebook: "facebook.com/vvg",
     social_instagram: "instagram.com/vvg",
     social_twitter: "twitter.com/vvg",
@@ -10,7 +10,7 @@ const artistsData = [
   },
   {
     artist_username: "monet",
-    artist_apiKey: "null",
+    artist_password: "password",
     social_facebook: "facebook.com/monet",
     social_instagram: "instagram.com/monet",
     social_twitter: "twitter.com/monet",
