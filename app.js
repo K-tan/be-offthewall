@@ -1,4 +1,5 @@
 const { ApolloServer, gql } = require("apollo-server");
+require("dotenv").config();
 const {
   queryType,
   mutationType,
