@@ -1,6 +1,5 @@
 require("dotenv").config();
 const { ApolloServer, gql } = require("apollo-server");
-const database = require("./connection");
 const { getUser } = require("./utils");
 const { typeDefs } = require("./schema/typeDefs");
 const {
@@ -23,7 +22,7 @@ exports.app = new ApolloServer({
   context: async ({ req }) => {
     const token = req.headers.authorization || "";
     const user = getUser(token);
-    return { database, user };
+    return { user };
   },
   introspection: true,
   playground: true

@@ -1,33 +1,29 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { KEY } = process.env;
-
+const database = require("./connection");
 exports.resolvers = {
   Query: {
-    fetchArtistById: (parent, { artist_id }, { database }) =>
+    fetchArtistById: (parent, { artist_id }) =>
       database("artists")
         .first("*")
         .where("artist_id", artist_id),
-    fetchWallById: (parent, { wall_id }, { database }) =>
+    fetchWallById: (parent, { wall_id }) =>
       database("walls")
         .first("*")
         .where("wall_id", wall_id),
-    fetchAllWalls: ({ database }) => database("walls").select("*"),
-    fetchAllImages: ({ database }) =>
+    fetchAllWalls: () => database("walls").select("*"),
+    fetchAllImages: () =>
       database("images")
         .select("*")
         .orderBy("image_id"),
-    fetchImagesByWallId: (parent, { wall_id }, { database }) =>
+    fetchImagesByWallId: (parent, { wall_id }) =>
       database("images")
         .select("*")
         .where("wall_id", wall_id)
   },
   Mutation: {
-    addImage: (
-      parent,
-      { image_url, blurb, wall_id, artist_id },
-      { database }
-    ) =>
+    addImage: (parent, { image_url, blurb, wall_id, artist_id }) =>
       database("images")
         .insert({
           image_url,
@@ -36,11 +32,7 @@ exports.resolvers = {
           artist_id
         })
         .returning("*"),
-    login: async (
-      parent,
-      { artist_username, artist_password },
-      { database }
-    ) => {
+    login: async (parent, { artist_username, artist_password }) => {
       const user = await database("artists")
         .first("artist_id", "artist_username", "artist_password")
         .where("artist_username", artist_username)
@@ -69,13 +61,13 @@ exports.resolvers = {
     }
   },
   Image: {
-    wall_id: ({ wall_id }, args, { database }) =>
+    wall_id: ({ wall_id }, args) =>
       database("walls")
         .first("*")
         .where("wall_id", wall_id)
   },
   Wall: {
-    async images({ wall_id }, args, { database }) {
+    async images({ wall_id }, args) {
       const wall = database("images")
         .select("*")
         .where("wall_id", wall_id);
@@ -83,7 +75,7 @@ exports.resolvers = {
     }
   },
   Artist: {
-    async artists({ artist_id }, args, { database }) {
+    async artists({ artist_id }, args) {
       const artist = database("images")
         .select("*")
         .where("artist_id", artist_id);
