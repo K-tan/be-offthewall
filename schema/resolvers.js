@@ -1,25 +1,29 @@
 const { KEY } = process.env;
-const database = require("../connection");
+// const database = require("../connection");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 exports.queries = {
   Query: {
-    fetchArtistById: (parent, { artist_id }) =>
-      database("artists")
+    fetchArtistById: (parent, { artist_id }, context) =>
+      context
+        .database("artists")
         .first("*")
         .where("artist_id", artist_id),
-    fetchWallById: (parent, { wall_id }) =>
-      database("walls")
+    fetchWallById: (parent, { wall_id }, context) =>
+      context
+        .database("walls")
         .first("*")
         .where("wall_id", wall_id),
-    fetchAllWalls: () => database("walls").select("*"),
-    fetchAllImages: () =>
-      database("images")
+    fetchAllWalls: context => context.database("walls").select("*"),
+    fetchAllImages: context =>
+      context
+        .database("images")
         .select("*")
         .orderBy("image_id"),
-    fetchImagesByWallId: (parent, { wall_id }) =>
-      database("images")
+    fetchImagesByWallId: (parent, { wall_id }, context) =>
+      context
+        .database("images")
         .select("*")
         .where("wall_id", wall_id)
   }
@@ -27,8 +31,9 @@ exports.queries = {
 
 exports.mutations = {
   Mutation: {
-    addImage: (parent, { image_url, blurb, wall_id, artist_id }) =>
-      database("images")
+    addImage: (parent, { image_url, blurb, wall_id, artist_id }, context) =>
+      context
+        .database("images")
         .insert({
           image_url,
           blurb,
@@ -36,24 +41,21 @@ exports.mutations = {
           artist_id
         })
         .returning("*"),
-    login: async (parent, { artist_username, artist_password }) => {
-      let user;
-      await database("artists")
-        .first("artist_id", "artist_password")
+    login: async (parent, { artist_username, artist_password }, context) => {
+      const user = await context
+        .database("artists")
+        .first("artist_id", "artist_username", "artist_password")
         .where("artist_username", artist_username)
-        .returning("*")
-        .then(res => {
-          user = res;
-        });
+        .returning("*");
       if (!user) {
-        console.log(new Error("Invalid Login"));
+        throw new Error("Username not recognised");
       }
       const passwordMatch = await bcrypt.compare(
         artist_password,
         user.artist_password
       );
       if (!passwordMatch) {
-        console.log(new Error("Invalid Login"));
+        throw new Error("Your password is incorrect");
       }
       const token = jwt.sign(
         {
@@ -61,17 +63,20 @@ exports.mutations = {
           username: user.artist_username
         },
         KEY,
-        { expiresIn: "30d" }
+        {
+          expiresIn: "30d"
+        }
       );
-      return [{ token, user }];
+      return { token, user };
     }
   }
 };
 
 exports.imageNest = {
   Image: {
-    wall_id: parent =>
-      database("walls")
+    wall_id: (parent, args, context) =>
+      context
+        .database("walls")
         .first("*")
         .where("wall_id", parent.wall_id)
   }
@@ -79,9 +84,10 @@ exports.imageNest = {
 
 exports.wallNest = {
   Wall: {
-    async images(parent) {
+    async images(parent, args, context) {
       // await new Promise(resolve => setTimeout(resolve, 500));
-      const wall = database("images")
+      const wall = context
+        .database("images")
         .select("*")
         .where("wall_id", parent.wall_id);
       return wall;
@@ -92,7 +98,8 @@ exports.wallNest = {
 exports.artistNest = {
   Artist: {
     async artists(parent) {
-      const artist = database("images")
+      const artist = context
+        .database("images")
         .select("*")
         .where("artist_id", parent.artist_id);
       return artist;

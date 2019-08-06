@@ -59,7 +59,7 @@ exports.queryType = `type Query {
 
 exports.mutationType = `type Mutation {
     addImage(image_url: String!, blurb: String, wall_id: Int!, artist_id:Int!): [Image]
-    login(artist_username: String!, artist_password: String!): [LoginResponse!]
+    login(artist_username: String!, artist_password: String!): LoginResponse!
 }`;
 
 exports.loginResponseType = `type LoginResponse {

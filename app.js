@@ -1,5 +1,7 @@
+const database = require("./connection");
 const { ApolloServer, gql } = require("apollo-server");
 require("dotenv").config();
+const getUser = require("./utils");
 const {
   queryType,
   mutationType,
@@ -32,7 +34,11 @@ const app = new ApolloServer({
     Image,
     Wall
   },
-  context: ({ req, res }) => {},
+  context: async ({ req }) => {
+    const token = req.headers.authorization || "";
+    const user = getUser(token);
+    return { database, user };
+  },
   introspection: true,
   playground: true
 });
