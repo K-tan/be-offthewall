@@ -11,7 +11,7 @@
     "migrate-rollback:prod": "NODE_ENV=production DB_URL=$(heroku config:get DATABASE_URL) knex migrate:rollback",
     "seed:prod": "NODE_ENV=production && DB_URL=$(heroku config:get DATABASE_URL) && knex seed:run",
     "setup-test-dbs": "psql -f ./database/setup.sql && knex seed:run",
-    "start": "node listen.js",
+    "start": "nodemon listen.js",
     "test": "jest --watch"
   },
   "repository": {
@@ -32,11 +32,11 @@
     "graphql": "^14.4.2",
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.19.1",
-    "pg": "^7.12.0"
+    "pg": "^7.12.0",
+    "supertest": "^4.0.2"
   },
   "devDependencies": {
     "jest": "^24.8.0",
-    "nodemon": "^1.19.1",
-    "supertest": "^4.0.2"
+    "nodemon": "^1.19.1"
   }
 }
