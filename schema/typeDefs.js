@@ -7,7 +7,7 @@ exports.typeDefs = `
         fetchWallById(wall_id: ID!): Wall
     }
     type Mutation {
-        addImage(image_url: String!, blurb: String, wall_id: Int!, artist_id:Int!): [Image]
+        addImage(image_url: String!, blurb: String, wall_id: Int!): [Image]
         login(artist_username: String!, artist_password: String!): LoginResponse!
     }
     type LoginResponse {
