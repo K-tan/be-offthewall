@@ -28,12 +28,12 @@ exports.resolvers = {
       if (!user) {
         throw new Error("You must be logged in to post a new image");
       } else
-        database("images")
+        return database("images")
           .insert({
             image_url,
             blurb,
             wall_id,
-            artist_id: user.artist_id
+            artist_id: user.id
           })
           .returning("*");
     },
