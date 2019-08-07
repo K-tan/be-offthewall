@@ -69,14 +69,6 @@ exports.resolvers = {
       return { token, user };
     }
   },
-  Artist: {
-    async artists({ artist_id }, args, { database }) {
-      const artist = database("images")
-        .select("*")
-        .where("artist_id", artist_id);
-      return artist;
-    }
-  },
   Image: {
     wall_id: ({ wall_id }, args, { database }) =>
       database("walls")
