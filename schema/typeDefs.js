@@ -23,7 +23,6 @@ exports.typeDefs = `
         social_twitter: String
         social_website: String
         bio: String
-        images: [Image]
     }
     type Wall {
         wall_id: ID!
@@ -51,7 +50,7 @@ exports.typeDefs = `
         image_url: String!
         blurb: String
         wall_id: Wall
-        artist_id: Artist
+        artist_id: artist_id
         created_at: String!
     }
     type Comment {
