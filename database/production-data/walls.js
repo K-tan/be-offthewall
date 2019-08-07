@@ -6,7 +6,7 @@ const wallsData = [
     latitude: 53.7949778,
     longitude: -1.5449472,
     street_address: "Northcoders, Platform, New Station Street, Leeds, LS1 4JB",
-    info: "to the right of the kitchenette",
+    info: "To the right of the kitchenette.",
     canvas_height: 1.46,
     canvas_width: 2.34,
     trigger_height: 1.17,
@@ -17,21 +17,6 @@ const wallsData = [
   {
     wall_id: 2,
     canvas_url:
-      "https://firebasestorage.googleapis.com/v0/b/slickproject-fbaad.appspot.com/o/aql_canvas.jpg?alt=media&token=a686b488-c630-43ea-bd96-0ff03ddc71df",
-    latitude: 53.7925,
-    longitude: -1.54042,
-    street_address: "Hunslet Road, Leeds, LS10 1JQ",
-    info: "AQL building. Look for the ornate window.",
-    canvas_height: 4.21,
-    canvas_width: 6.4,
-    trigger_height: 2.69,
-    trigger_width: 3,
-    trigger_offset_x: 0.0,
-    trigger_offset_y: 3.5
-  },
-  {
-    wall_id: 3,
-    canvas_url:
       "https://firebasestorage.googleapis.com/v0/b/slickproject-fbaad.appspot.com/o/bowman_canvas.jpg?alt=media&token=c573131d-5ce9-4e54-a506-b6bdea690afd",
     latitude: 53.7932,
     longitude: -1.53761,
@@ -40,12 +25,12 @@ const wallsData = [
     canvas_height: 2.16,
     canvas_width: 3.52,
     trigger_height: 0.85,
-    trigger_width: 0.3,
+    trigger_width: 0.85,
     trigger_offset_x: 0.22,
     trigger_offset_y: 0.51
   },
   {
-    wall_id: 4,
+    wall_id: 3,
     canvas_url:
       "https://firebasestorage.googleapis.com/v0/b/slickproject-fbaad.appspot.com/o/quadrapeds_canvas.jpg?alt=media&token=75c7ffb9-3c80-45bd-817c-38e0b772ae5b",
     latitude: 53.371441,
@@ -58,6 +43,66 @@ const wallsData = [
     trigger_width: 0.52,
     trigger_offset_x: 1.44,
     trigger_offset_y: 0.0
+  },
+  {
+    wall_id: 4,
+    canvas_url:
+      "https://firebasestorage.googleapis.com/v0/b/slickproject-fbaad.appspot.com/o/brewery_wharf_map_canvas.jpg?alt=media&token=7269c82c-ce50-4210-9deb-f7fcedd83bf5",
+    latitude: 53.7946194,
+    longitude: -1.5377333,
+    street_address: "46 The Calls, Leeds, LS2 7EY",
+    info: "Near the bridge. Look for the map.",
+    canvas_height: 4.58,
+    canvas_width: 5.80,
+    trigger_height: 1.2,
+    trigger_width: 1.2,
+    trigger_offset_x: 0.43,
+    trigger_offset_y: 3.03
+  },
+  {
+    wall_id: 5,
+    canvas_url:
+      "https://firebasestorage.googleapis.com/v0/b/slickproject-fbaad.appspot.com/o/brewery_wharf_fh_canvas.jpg?alt=media&token=1bf1ea3a-b1bf-466c-867d-56c3e4e7bf07",
+    latitude: 53.7945861,
+    longitude: -1.5375750,
+    street_address: "36-38 The Calls, Leeds, LS2 7EY",
+    info: "With the river behind you, look ahead for a small sign.",
+    canvas_height: 2.19,
+    canvas_width: 2.93,
+    trigger_height: 0.45,
+    trigger_width: 0.45,
+    trigger_offset_x: 0.87,
+    trigger_offset_y: 0.52
+  },
+  {
+    wall_id: 6,
+    canvas_url:
+      "https://firebasestorage.googleapis.com/v0/b/slickproject-fbaad.appspot.com/o/shears_yard_canvas.jpg?alt=media&token=4f7d07c1-abdf-47d3-b553-ae3a3a7bd535",
+    latitude: 53.795099,
+    longitude: -1.538467,
+    street_address: "11-15 Wharf Street, Leeds, LS2 7EH",
+    info: "The main entrance of Shears Yard restaurant.",
+    canvas_height: 3.3,
+    canvas_width: 2.77,
+    trigger_height: 1.2,
+    trigger_width: 1.2,
+    trigger_offset_x: 1.23,
+    trigger_offset_y: 0.0
+  },
+  {
+    wall_id: 7,
+    canvas_url:
+      "https://firebasestorage.googleapis.com/v0/b/slickproject-fbaad.appspot.com/o/trinity_car_park_canvas.jpg?alt=media&token=ea3d6e3e-f36e-49a1-bd2e-3d936d8fb473",
+    latitude: 53.79525,
+    longitude: -1.545175,
+    street_address: "18 New Station Street, Leeds, LS1 5DL",
+    info: "Look for the map near Evan's Cycles.",
+    canvas_height: 2.67,
+    canvas_width: 3.49,
+    trigger_height: 1.2,
+    trigger_width: 1.2,
+    trigger_offset_x: 0.0,
+    trigger_offset_y: 0.99
   }
 ];
 
