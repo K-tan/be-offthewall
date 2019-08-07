@@ -1,7 +1,7 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { KEY } = process.env;
-
+// const database = require("../connection");
 exports.resolvers = {
   Query: {
     fetchArtistById: (parent, { artist_id }, { database }) =>
@@ -69,23 +69,11 @@ exports.resolvers = {
       return { token, user };
     }
   },
-  Artist: {
-    async images({ artist_id }, args, { database }) {
-      const artist = database("images")
-        .select("*")
-        .where("artist_id", artist_id);
-      return artist;
-    }
-  },
   Image: {
     wall_id: ({ wall_id }, args, { database }) =>
       database("walls")
         .first("*")
-        .where("wall_id", wall_id),
-    artist_id: ({ artist_id }, args, { database }) =>
-      database("artists")
-        .first("*")
-        .where("artist_id", artist_id)
+        .where("wall_id", wall_id)
   },
   Wall: {
     async images({ wall_id }, args, { database }) {
@@ -93,6 +81,14 @@ exports.resolvers = {
         .select("*")
         .where("wall_id", wall_id);
       return wall;
+    }
+  },
+  Artist: {
+    async artists({ artist_id }, args, { database }) {
+      const artist = database("images")
+        .select("*")
+        .where("artist_id", artist_id);
+      return artist;
     }
   }
 };

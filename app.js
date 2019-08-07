@@ -1,13 +1,12 @@
 require("dotenv").config();
 const { ApolloServer, gql } = require("apollo-server");
-const { database } = require("./connection");
+const database = require("./connection");
 const { getUser } = require("./utils");
 const { typeDefs } = require("./schema/typeDefs");
 const {
-  Artist,
-  Image,
-  Mutation,
   Query,
+  Mutation,
+  Image,
   Wall
 } = require("./schema/resolvers").resolvers;
 
@@ -18,7 +17,6 @@ exports.app = new ApolloServer({
   resolvers: {
     Query,
     Mutation,
-    Artist,
     Image,
     Wall
   },

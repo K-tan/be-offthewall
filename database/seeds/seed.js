@@ -1,4 +1,5 @@
 const bcrypt = require("bcryptjs");
+const saltRounds = 10;
 const database = require("../../connection");
 const {
   artistsData,
@@ -7,7 +8,6 @@ const {
   imagesData,
   wallsData
 } = require("../index.js");
-const saltRounds = 10;
 
 exports.seed = () => {
   return database.migrate
