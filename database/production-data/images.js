@@ -90,6 +90,27 @@ const imagesData = [
     wall_id: 7,
     artist_id: 2
   },
+  {
+    image_url:
+      "https://firebasestorage.googleapis.com/v0/b/slickproject-fbaad.appspot.com/o/sunmoondance_bowman.png?alt=media&token=89c62a95-1d61-42fb-80ab-0506403b98a0",
+    blurb: "Sun and Moon Dance",
+    wall_id: 2,
+    artist_id: 1
+  },
+  {
+    image_url:
+      "https://firebasestorage.googleapis.com/v0/b/slickproject-fbaad.appspot.com/o/sunmoondance_brewery_wharf_fh.png?alt=media&token=652672d3-9d00-49f2-9836-86c9065f02bd",
+    blurb: "Sun and Moon Dance",
+    wall_id: 5,
+    artist_id: 1
+  },
+  {
+    image_url:
+      "https://firebasestorage.googleapis.com/v0/b/slickproject-fbaad.appspot.com/o/sunmoondance_nc.png?alt=media&token=c8941ad7-19a5-4bcc-83b9-c375fe0a980a",
+    blurb: "Sun and Moon Dance",
+    wall_id: 1,
+    artist_id: 1
+  }
 ];
 
 module.exports = imagesData;
