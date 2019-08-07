@@ -1,7 +1,7 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { KEY } = process.env;
-// const database = require("../connection");
+
 exports.resolvers = {
   Query: {
     fetchArtistById: (parent, { artist_id }, { database }) =>
@@ -24,19 +24,19 @@ exports.resolvers = {
         .where("wall_id", wall_id)
   },
   Mutation: {
-    addImage: (
-      parent,
-      { image_url, blurb, wall_id, artist_id },
-      { database }
-    ) =>
-      database("images")
-        .insert({
-          image_url,
-          blurb,
-          wall_id,
-          artist_id
-        })
-        .returning("*"),
+    addImage: (parent, { image_url, blurb, wall_id }, { database, user }) => {
+      if (!user) {
+        throw new Error("You must be logged in to post a new image");
+      } else
+        database("images")
+          .insert({
+            image_url,
+            blurb,
+            wall_id,
+            artist_id: user.artist_id
+          })
+          .returning("*");
+    },
     login: async (
       parent,
       { artist_username, artist_password },
