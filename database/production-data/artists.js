@@ -15,7 +15,7 @@ const artistsData = [
     social_instagram: null,
     social_twitter: null,
     social_website: null,
-    bio: "I like drawing animals."
+    bio: "Nature lover and all-round sleepy person."
   }
 ];
 
