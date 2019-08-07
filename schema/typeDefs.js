@@ -50,7 +50,7 @@ exports.typeDefs = `
         image_url: String!
         blurb: String
         wall_id: Wall
-        artist_id: artist_id
+        artist_id: Int!
         created_at: String!
     }
     type Comment {
