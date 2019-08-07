@@ -3,8 +3,8 @@ const wallsData = [
     wall_id: 1,
     canvas_url:
       "https://firebasestorage.googleapis.com/v0/b/slickproject-fbaad.appspot.com/o/nc_canvas.png?alt=media&token=61969f56-a09d-489e-93a2-0b71df7e73de",
-    latitude: 53.7949778,
-    longitude: -1.5449472,
+    latitude: 53.794876,
+    longitude: -1.546836,
     street_address: "Northcoders, Platform, New Station Street, Leeds, LS1 4JB",
     info: "To the right of the kitchenette.",
     canvas_height: 1.46,
