@@ -66,7 +66,7 @@ const imagesData = [
     image_url:
       "https://firebasestorage.googleapis.com/v0/b/slickproject-fbaad.appspot.com/o/raven_brewery_wharf_map.png?alt=media&token=c3cce66d-3b63-42c3-9ecb-4ed416f914b0",
     blurb: "Why is magic no longer done in England?",
-    wall_id: 6,
+    wall_id: 4,
     artist_id: 2
   },
   {
