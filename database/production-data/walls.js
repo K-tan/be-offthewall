@@ -103,6 +103,21 @@ const wallsData = [
     trigger_width: 1.2,
     trigger_offset_x: 0.0,
     trigger_offset_y: 0.99
+  },
+  {
+    wall_id: 8,
+    canvas_url:
+      "https://firebasestorage.googleapis.com/v0/b/slickproject-fbaad.appspot.com/o/yas_canvas.jpg?alt=media&token=8aed2fae-063c-448c-8061-71554abfe70a",
+    latitude: 53.376291,
+    longitude: -1.467415,
+    street_address: "Yorkshire Artspace, 21 Brown St, Sheffield S1 2BS",
+    info: "Look for the concrete wall of the permissive footpath.",
+    canvas_height: 1.76,
+    canvas_width: 3.67,
+    trigger_height: 0.48,
+    trigger_width: 0.48,
+    trigger_offset_x: 0.10,
+    trigger_offset_y: 0.29
   }
 ];
 
