@@ -106,9 +106,16 @@ const imagesData = [
   },
   {
     image_url:
-      "https://firebasestorage.googleapis.com/v0/b/slickproject-fbaad.appspot.com/o/sunmoondance_nc.png?alt=media&token=c8941ad7-19a5-4bcc-83b9-c375fe0a980a",
+      "https://firebasestorage.googleapis.com/v0/b/slickproject-fbaad.appspot.com/o/music_shears_yard.png?alt=media&token=ff2a42ed-b844-4685-9a5d-eb8ef386048b",
+    blurb: "Music Visible",
+    wall_id: 6,
+    artist_id: 2
+  },
+  {
+    image_url:
+      "https://firebasestorage.googleapis.com/v0/b/slickproject-fbaad.appspot.com/o/sunmoondance_shears_yard.png?alt=media&token=e5001070-bbc2-439c-a66c-01591f0b2974",
     blurb: "Sun and Moon Dance",
-    wall_id: 1,
+    wall_id: 6,
     artist_id: 1
   }
 ];
