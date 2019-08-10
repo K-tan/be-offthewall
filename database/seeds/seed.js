@@ -1,6 +1,6 @@
 const bcrypt = require("bcryptjs");
 const saltRounds = 10;
-const database = require("../../connection");
+// const database = require("../../connection");
 const {
   artistsData,
   commentsData,
@@ -9,7 +9,7 @@ const {
   wallsData
 } = require("../index.js");
 
-exports.seed = function(database, Promise) {
+exports.seed = function(database) {
   return database.migrate
     .rollback()
     .then(() => database.migrate.latest())
