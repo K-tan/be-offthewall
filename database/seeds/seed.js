@@ -9,7 +9,7 @@ const {
   wallsData
 } = require("../index.js");
 
-exports.seed = () => {
+exports.seed = function(database, Promise) {
   return database.migrate
     .rollback()
     .then(() => database.migrate.latest())
