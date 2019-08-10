@@ -124,6 +124,20 @@ const imagesData = [
     blurb: "Sun and Moon Dance",
     wall_id: 6,
     artist_id: 1
+  },
+  {
+    image_url:
+      "https://firebasestorage.googleapis.com/v0/b/slickproject-fbaad.appspot.com/o/raven_yas.png?alt=media&token=6c8d9db5-3b9d-4568-b9f5-5a45e05da76c",
+    blurb: "Why is magic no longer done in England?",
+    wall_id: 8,
+    artist_id: 2
+  },
+  {
+    image_url:
+      "https://firebasestorage.googleapis.com/v0/b/slickproject-fbaad.appspot.com/o/music_yas.png?alt=media&token=fcb4cd72-41e1-47f0-88c8-81eb7c762fcc",
+    blurb: "Music Visible",
+    wall_id: 8,
+    artist_id: 2
   }
 ];
 
