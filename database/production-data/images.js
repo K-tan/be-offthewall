@@ -78,13 +78,6 @@ const imagesData = [
   },
   {
     image_url:
-      "https://firebasestorage.googleapis.com/v0/b/slickproject-fbaad.appspot.com/o/raven_quadrapeds.png?alt=media&token=326f419a-6184-4029-8d45-2e1805285ac3",
-    blurb: "Why is magic no longer done in England?",
-    wall_id: 3,
-    artist_id: 2
-  },
-  {
-    image_url:
       "https://firebasestorage.googleapis.com/v0/b/slickproject-fbaad.appspot.com/o/raven_trinity_car_park.png?alt=media&token=abedd52f-a644-4df2-8782-a44136185fe2",
     blurb: "Why is magic no longer done in England?",
     wall_id: 7,
