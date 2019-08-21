@@ -24,18 +24,15 @@ exports.resolvers = {
         .where("wall_id", wall_id)
   },
   Mutation: {
-    addImage: (parent, { image_url, blurb, wall_id }, { database, user }) => {
-      if (!user) {
-        throw new Error("You must be logged in to post a new image");
-      } else
-        return database("images")
-          .insert({
-            image_url,
-            blurb,
-            wall_id,
-            artist_id: user.id
-          })
-          .returning("*");
+    addImage: (parent, { image_url, blurb, wall_id, token }, { database }) => {
+      return database("images")
+        .insert({
+          image_url,
+          blurb,
+          wall_id,
+          artist_id
+        })
+        .returning("*");
     },
     login: async (
       parent,
