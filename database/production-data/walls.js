@@ -30,21 +30,6 @@ const wallsData = [
     trigger_offset_y: 0.51
   },
   {
-    wall_id: 3,
-    canvas_url:
-      "https://firebasestorage.googleapis.com/v0/b/slickproject-fbaad.appspot.com/o/quadrapeds_canvas.jpg?alt=media&token=75c7ffb9-3c80-45bd-817c-38e0b772ae5b",
-    latitude: 53.371441,
-    longitude: -1.523469,
-    street_address: "Marr Terrace, Sheffield, S10 3GL",
-    info: "Simon's house. Please remove before we release the app.",
-    canvas_height: 1.31,
-    canvas_width: 1.96,
-    trigger_height: 0.52,
-    trigger_width: 0.52,
-    trigger_offset_x: 1.44,
-    trigger_offset_y: 0.0
-  },
-  {
     wall_id: 4,
     canvas_url:
       "https://firebasestorage.googleapis.com/v0/b/slickproject-fbaad.appspot.com/o/brewery_wharf_map_canvas.jpg?alt=media&token=7269c82c-ce50-4210-9deb-f7fcedd83bf5",
