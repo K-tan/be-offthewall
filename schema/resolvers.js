@@ -6,7 +6,7 @@ exports.resolvers = {
   Query: {
     fetchArtistById: (parent, { artist_id }, { database }) =>
       database("artists")
-        .first("artist_username, social_facebook, social_instagram, social_twitter, social_website, bio")
+        .first("artist_username", "social_facebook", "social_instagram", "social_twitter", "social_website", "bio")
         .where("artist_id", artist_id),
     fetchWallById: (parent, { wall_id }, { database }) =>
       database("walls")
@@ -86,7 +86,7 @@ exports.resolvers = {
   Artist: {
     async artists({ artist_id }, args, { database }) {
       const artist = database("images")
-        .select("artist_username, social_facebook, social_instagram, social_twitter, social_website, bio")
+        .select("artist_username", "social_facebook", "social_instagram", "social_twitter", "social_website", "bio")
         .where("artist_id", artist_id);
       return artist;
     }
