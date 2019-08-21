@@ -13,7 +13,7 @@
     "seed:staging": "NODE_ENV=production DATABASE_URL=$(heroku config:get DATABASE_URL -a damp-earth-59669) knex seed:run",
     "setup-test-dbs": "psql -f ./database/setup.sql && knex seed:run",
     "start": "node listen.js",
-    "dev": "nodemon listen.js",
+    "dev": "KEY=test nodemon listen.js",
     "test": "jest --watch"
   },
   "repository": {
