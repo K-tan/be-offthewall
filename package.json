@@ -5,13 +5,15 @@
   "main": "app.js",
   "scripts": {
     "migrate-latest": "npx knex migrate:latest",
-    "migrate-latest:prod": "NODE_ENV=production DB_URL=$(heroku config:get DATABASE_URL) knex migrate:latest",
+    "migrate-latest:prod": "NODE_ENV=production DATABASE_URL=$(heroku config:get DATABASE_URL) knex migrate:latest",
     "migrate-make": "knex migrate:make",
     "migrate-rollback": "npx knex migrate:rollback",
-    "migrate-rollback:prod": "NODE_ENV=production DB_URL=$(heroku config:get DATABASE_URL) knex migrate:rollback",
-    "seed:prod": "NODE_ENV=production && DB_URL=$(heroku config:get DATABASE_URL) && knex seed:run",
+    "migrate-rollback:prod": "NODE_ENV=production DATABASE_URL=$(heroku config:get DATABASE_URL -a offthewall-teamslick) knex migrate:rollback",
+    "seed:prod": "NODE_ENV=production DATABASE_URL=$(heroku config:get DATABASE_URL -a offthewall-teamslick) knex seed:run",
+    "seed:staging": "NODE_ENV=production DATABASE_URL=$(heroku config:get DATABASE_URL -a damp-earth-59669) knex seed:run",
     "setup-test-dbs": "psql -f ./database/setup.sql && knex seed:run",
     "start": "node listen.js",
+    "dev": "nodemon listen.js",
     "test": "jest --watch"
   },
   "repository": {
