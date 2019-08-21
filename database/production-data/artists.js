@@ -1,16 +1,17 @@
+const passwords = require('../../credentials');
 const artistsData = [
-  {
+  passwords.bobbirae && {
     artist_username: "bobbirae",
-    artist_password: "qwerty",
+    artist_password: passwords.bobbirae,
     social_facebook: null,
     social_instagram: "https://www.instagram.com/bearcubs/",
     social_twitter: "https://twitter.com/bobbiraecouk",
     social_website: "https://bobbirae.co.uk",
     bio: null
   },
-  {
+  passwords.mikitillett && {
     artist_username: "mikitillett",
-    artist_password: "ytrewq",
+    artist_password: passwords.mikitillett,
     social_facebook: null,
     social_instagram: null,
     social_twitter: null,
@@ -19,4 +20,4 @@ const artistsData = [
   }
 ];
 
-module.exports = artistsData;
+module.exports = artistsData.filter(e => e);
