@@ -63,7 +63,7 @@ exports.resolvers = {
         },
         KEY,
         {
-          expiresIn: "30d"
+          expiresIn: "1h"
         }
       );
       return { token, user };
