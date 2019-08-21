@@ -17,9 +17,9 @@ exports.seed = function(database) {
       let hashedData = [...artistsData];
       let salt = bcrypt.genSaltSync(saltRounds);
       hashedData.forEach((artist, index) => {
-        if (artist.password === undefined) {
-          hashedData[index].artist_password = "password";
-        }
+        // if (artist.password === undefined) {
+        //   hashedData[index].artist_password = "password";
+        // }
         hashedData[index].artist_password = bcrypt.hashSync(
           artist.artist_password,
           salt
