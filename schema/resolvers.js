@@ -6,7 +6,7 @@ exports.resolvers = {
   Query: {
     fetchArtistById: (parent, { artist_id }, { database }) =>
       database("artists")
-        .first("*")
+        .first("artist_username", "social_facebook", "social_instagram", "social_twitter", "social_website", "bio")
         .where("artist_id", artist_id),
     fetchWallById: (parent, { wall_id }, { database }) =>
       database("walls")
@@ -24,11 +24,11 @@ exports.resolvers = {
         .where("wall_id", wall_id)
   },
   Mutation: {
-    addImage: (parent, { image_url, blurb, wall_id }, { database, user }) => {
+    addImage: async (parent, { image_url, blurb, wall_id }, { database, user }) => {
       if (!user) {
         throw new Error("You must be logged in to post a new image");
-      } else
-        return database("images")
+      } else {
+        const newRecord = await database("images")
           .insert({
             image_url,
             blurb,
@@ -36,6 +36,8 @@ exports.resolvers = {
             artist_id: user.id
           })
           .returning("*");
+        return newRecord;
+      }
     },
     login: async (
       parent,
@@ -63,7 +65,7 @@ exports.resolvers = {
         },
         KEY,
         {
-          expiresIn: "30d"
+          expiresIn: "1h"
         }
       );
       return { token, user };
@@ -86,7 +88,7 @@ exports.resolvers = {
   Artist: {
     async artists({ artist_id }, args, { database }) {
       const artist = database("images")
-        .select("*")
+        .select("artist_username", "social_facebook", "social_instagram", "social_twitter", "social_website", "bio")
         .where("artist_id", artist_id);
       return artist;
     }
